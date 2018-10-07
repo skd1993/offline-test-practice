@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Ionic Blank
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+
+        <ion-item>
+            <ion-label floating>Enter no. of questions</ion-label>
+            <ion-input type="number" [clearInput]="true" [min]="1" [(ngModel)]="questions"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Enter no. of options (default is 4)</ion-label>
+            <ion-input type="number"  [clearInput]="true"  [min]="2" [(ngModel)]="options"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Enter no. of minutes for test</ion-label>
+            <ion-input type="number"  [clearInput]="true"  [min]="1" [(ngModel)]="minutes"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <button ion-button full (click)="startTest()">Start Test</button>
+</ion-content>

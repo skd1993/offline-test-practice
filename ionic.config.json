@@ -1,0 +1,7 @@
+{
+  "name": "offline-test-practice",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
