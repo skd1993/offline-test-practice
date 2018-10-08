@@ -24,6 +24,16 @@
             <ion-input type="number"  [clearInput]="true"  [min]="1" [(ngModel)]="minutes"></ion-input>
         </ion-item>
 
+        <ion-item>
+            <ion-label floating>Marks for correct response</ion-label>
+            <ion-input type="number"  [clearInput]="true"  [min]="1" [(ngModel)]="positive"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Negative marks for wrong response (subtracted from total)</ion-label>
+            <ion-input type="number"  [clearInput]="true"  [min]="0" [(ngModel)]="negative"></ion-input>
+        </ion-item>
+
     </ion-list>
 
     <button ion-button full (click)="startTest()">Start Test</button>

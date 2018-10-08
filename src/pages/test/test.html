@@ -7,9 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-    This is the test screen
-
-    <ion-list radio-group *ngFor="let q of ' '.repeat(questions).split(''), let x = index">
+    <ion-list radio-group *ngFor="let q of ' '.repeat(questions).split(''), let x = index" >
 
         <ion-list-header>
           Question no. {{x+1}}
@@ -17,10 +15,14 @@
       
         <ion-item *ngFor="let i of o.slice(0, options)">
           <ion-label>{{i}}</ion-label>
-          <ion-radio value="{{i}}"></ion-radio>
+          <ion-radio value="{{i}}" (ionSelect)="mcqAnswer(x,i)"></ion-radio>
         </ion-item>
-      
-      </ion-list>      
+
+    </ion-list>      
+
+    <ion-list *ngFor="let k of answers">
+        <ion-item>{{k}}</ion-item>
+    </ion-list>
 
     <ion-fab right bottom>
         <button ion-fab color="danger" (click)="showConfirm()"><ion-icon name="close"></ion-icon></button>
