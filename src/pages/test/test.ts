@@ -18,7 +18,8 @@ export class TestPage {
 
   o = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
-  answers = []
+  answers = {}
+  const
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public toastCtrl: ToastController) {
     this.questions = this.navParams.get('questions');
@@ -49,15 +50,20 @@ export class TestPage {
         {
           text: 'Go home (progress will be lost)',
           handler: () => {
+			this.answers = {}
 			this.navCtrl.pop();
           }
         },
         {
           text: 'Finish test and calculate marks',
           handler: () => {
-			if(this.answers.length != 0){
+			if(Object.keys(this.answers).length !== 0){
 				this.navCtrl.push(CalculatePage, {
-					responseData: this.answers
+					responseData: this.answers,
+					questions: this.questions,
+					positive: this.positive,
+					negative: this.negative,
+					answered: Object.keys(this.answers).length
 				});
 			}
             else {
@@ -81,7 +87,8 @@ export class TestPage {
   }
 
   mcqAnswer(x, i) {
-    this.answers[x] = { 'res': i }
+	// this.answers[x] = { 'res': i }
+	this.answers[x] = {'res': i}
   }
 
 }

@@ -7,15 +7,36 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-grid>
-        <ion-row *ngFor="let x of responseData, let i=index">
-            <ion-col col-12>
-                    <ion-item>
-                        <ion-label>{{i+1}}. {{x.res}}</ion-label>
-                        <ion-checkbox color="primary" checked="false"></ion-checkbox>
-                        <ion-label>Marks will come here</ion-label>
-                    </ion-item>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+    <ion-item text-wrap>
+        <strong>Note:</strong> Unticked items means it is incorrect (score will show in negative on start)
+    </ion-item>
+    <ion-item *ngFor="let key of objectKeys(responseData)">
+        <ion-label>{{key}}. {{responseData[key].res}}</ion-label>
+        <ion-checkbox color="primary" checked="false" (ionChange)="toggle(key)"></ion-checkbox>
+    </ion-item>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-item>
+            <ion-icon name="help" item-start></ion-icon>
+            Questions unanswered
+            <ion-badge item-end>{{questions - answered}}</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="checkmark" item-start></ion-icon>
+            Answered correct
+            <ion-badge item-end>{{right}}</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="close" item-start></ion-icon>
+            Answered incorrect
+            <ion-badge item-end>{{wrong}}</ion-badge>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="done-all" item-start></ion-icon>
+            Total Score out of {{positive*questions}}
+            <ion-badge item-end>{{total}}</ion-badge>
+        </ion-item>
+    </ion-toolbar>
+</ion-footer>
