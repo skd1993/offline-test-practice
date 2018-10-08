@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, AlertController, Navbar, NavParams } from 'ionic-angular';
+import { CalculatePage } from '../calculate/calculate';
 
 @Component({
   selector: 'page-test',
@@ -55,7 +56,7 @@ export class TestPage {
           text: 'Yes',
           handler: () => {
             console.log('Yes clicked');
-            this.navCtrl.pop();
+            this.navCtrl.push(CalculatePage);
           }
         }
       ]
