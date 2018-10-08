@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, AlertController, Navbar, NavParams } from 'ionic-angular';
+import { NavController, AlertController, Navbar, NavParams, ToastController } from 'ionic-angular';
 import { CalculatePage } from '../calculate/calculate';
 
 @Component({
@@ -20,7 +20,7 @@ export class TestPage {
 
   answers = []
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public toastCtrl: ToastController) {
     this.questions = this.navParams.get('questions');
     this.options = this.navParams.get('options');
     this.minutes = this.navParams.get('minutes');
@@ -43,25 +43,41 @@ export class TestPage {
 
   showConfirm() {
     const confirm = this.alertCtrl.create({
-      title: 'Exit test',
-      message: 'Do you want to exit the test?',
+      title: 'Exit test?',
+      message: 'What do you want to do?',
       buttons: [
         {
-          text: 'No',
+          text: 'Go home (progress will be lost)',
           handler: () => {
-            console.log('No clicked');
+			this.navCtrl.pop();
           }
         },
         {
-          text: 'Yes',
+          text: 'Finish test and calculate marks',
           handler: () => {
-            console.log('Yes clicked');
-            this.navCtrl.push(CalculatePage);
-          }
+			if(this.answers.length != 0){
+				this.navCtrl.push(CalculatePage, {
+					responseData: this.answers
+				});
+			}
+            else {
+				const toast = this.toastCtrl.create({
+					message: 'You have not answered any question',
+					duration: 1500
+				  });
+				  toast.present();
+			}
+		  }
         }
       ]
     });
-    confirm.present();
+	confirm.addButton({
+		text: 'Resume test',
+		role: 'cancel',
+          handler: () => {
+		  }
+	});
+	confirm.present();
   }
 
   mcqAnswer(x, i) {

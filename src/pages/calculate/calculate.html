@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Calculate Score
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row *ngFor="let x of responseData, let i=index">
+            <ion-col col-12>
+                    <ion-item>
+                        <ion-label>{{i+1}}. {{x.res}}</ion-label>
+                        <ion-checkbox color="primary" checked="false"></ion-checkbox>
+                        <ion-label>Marks will come here</ion-label>
+                    </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
