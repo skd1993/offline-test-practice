@@ -1,44 +1,32 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TestPage } from '../test/test';
-
+import { Validators, FormControl, FormGroup } from '@angular/forms';
+ 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+	selector: 'page-home',
+	templateUrl: 'home.html'
 })
 export class HomePage {
+	
+	private settingsForm: FormGroup;
 
-  questions: number;
-  options: number;
-  minutes: number;
-  positive: number;
-  negative: number;
+	constructor(public navCtrl: NavController) {
+	}
 
-  constructor(public navCtrl: NavController) {
-    this.questions = 10;
-    this.options = 4; //ABCD
-    this.minutes = 20;
-    this.positive = 1;
-    this.negative = 1; 
-  }
+	ngOnInit() {
+		this.settingsForm  = new FormGroup({
+			questions: new FormControl('10', [Validators.required, Validators.min(2)]),
+			options: new FormControl('4', [Validators.required, Validators.min(2), Validators.max(10)]),
+			positive: new FormControl('1', [Validators.required, Validators.min(1)]),
+			negative: new FormControl('1', [Validators.required, Validators.min(0)]),
+		})
+	}
 
-  ngOnInit() {
-    
-  }
-
-  startTest() {
-    const questions = this.questions
-    const options = this.options 
-    const minutes = this.minutes;
-    const positive = this.positive;
-    const negative = this.negative;
-    this.navCtrl.push(TestPage, {
-      questions,
-      options,
-      minutes,
-      positive,
-      negative
-    });
-  }
+	startTest() {
+		this.navCtrl.push(TestPage, {
+			settings: this.settingsForm.value
+		});
+	}
 
 }

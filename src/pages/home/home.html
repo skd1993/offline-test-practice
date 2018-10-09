@@ -7,34 +7,29 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list>
-
+   
+    <form novalidate [formGroup]="settingsForm" (ngSubmit)="startTest()">
         <ion-item>
-            <ion-label floating>Enter no. of questions</ion-label>
-            <ion-input type="number" [clearInput]="true" [min]="1" [(ngModel)]="questions"></ion-input>
+            <ion-label floating text-wrap>Enter no. of questions (min=2)</ion-label>
+            <ion-input type="number" [clearInput]="true" formControlName="questions"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Enter no. of options (default is 4)</ion-label>
-            <ion-input type="number"  [clearInput]="true"  [min]="2" [(ngModel)]="options"></ion-input>
+            <ion-label floating text-wrap>Enter no. of options (default=4, min=2, max=10)</ion-label>
+            <ion-input type="number"  [clearInput]="true"  formControlName="options"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Enter no. of minutes for test</ion-label>
-            <ion-input type="number"  [clearInput]="true"  [min]="1" [(ngModel)]="minutes"></ion-input>
+            <ion-label floating text-wrap>Marks for correct response (min=1)</ion-label>
+            <ion-input type="number"  [clearInput]="true"  formControlName="positive"></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label floating>Marks for correct response</ion-label>
-            <ion-input type="number"  [clearInput]="true"  [min]="1" [(ngModel)]="positive"></ion-input>
+            <ion-label floating text-wrap>Negative marks for wrong response (subtracted from total, min=0)</ion-label>
+            <ion-input type="number"  [clearInput]="true"  formControlName="negative"></ion-input>
         </ion-item>
-
-        <ion-item>
-            <ion-label floating>Negative marks for wrong response (subtracted from total)</ion-label>
-            <ion-input type="number"  [clearInput]="true"  [min]="0" [(ngModel)]="negative"></ion-input>
-        </ion-item>
-
-    </ion-list>
-
-    <button ion-button full (click)="startTest()">Start Test</button>
+        <br />
+        <button ion-button full [disabled]="!settingsForm.valid" type="submit">Start Test</button>
+    </form>
+    
 </ion-content>

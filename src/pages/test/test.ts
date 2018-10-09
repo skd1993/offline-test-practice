@@ -10,23 +10,14 @@ export class TestPage {
 
   @ViewChild(Navbar) navBar: Navbar;
 
-  questions: number;
-  options: number;
-  minutes: number;
-  positive: number;
-  negative: number;
+  settings
 
   o = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
   answers = {}
-  const
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, public toastCtrl: ToastController) {
-    this.questions = this.navParams.get('questions');
-    this.options = this.navParams.get('options');
-    this.minutes = this.navParams.get('minutes');
-    this.positive = this.navParams.get('positive');
-    this.negative = this.navParams.get('negative');
+    this.settings = this.navParams.get('settings');
   }
 
   ngOnInit() {
@@ -50,8 +41,8 @@ export class TestPage {
         {
           text: 'Go home (progress will be lost)',
           handler: () => {
-			this.answers = {}
-			this.navCtrl.pop();
+            this.answers = {}
+            this.navCtrl.pop();
           }
         },
         {
@@ -60,9 +51,9 @@ export class TestPage {
 			if(Object.keys(this.answers).length !== 0){
 				this.navCtrl.push(CalculatePage, {
 					responseData: this.answers,
-					questions: this.questions,
-					positive: this.positive,
-					negative: this.negative,
+					questions: this.settings.questions,
+					positive: this.settings.positive,
+					negative: this.settings.negative,
 					answered: Object.keys(this.answers).length
 				});
 			}

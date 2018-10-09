@@ -7,13 +7,13 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list radio-group *ngFor="let q of ' '.repeat(questions).split(''), let x=index" >
+    <ion-list radio-group *ngFor="let q of ' '.repeat(settings.questions).split(''), let x=index" >
 
         <ion-list-header>
           Question no. {{x+1}}
         </ion-list-header>
       
-        <ion-item *ngFor="let i of o.slice(0, options)">
+        <ion-item *ngFor="let i of o.slice(0, settings.options)">
           <ion-label>{{i}}</ion-label>
           <ion-radio value="{{i}}" (ionSelect)="mcqAnswer(x+1,i)"></ion-radio>
         </ion-item>
