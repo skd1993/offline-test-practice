@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { TestPage } from '../test/test';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
  
@@ -7,11 +7,13 @@ import { Validators, FormControl, FormGroup } from '@angular/forms';
 	selector: 'page-home',
 	templateUrl: 'home.html'
 })
+
 export class HomePage {
 	
 	private settingsForm: FormGroup;
+	pageTitle = 'Offline Test Practice'
 
-	constructor(public navCtrl: NavController) {
+	constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
 	}
 
 	ngOnInit() {
@@ -24,9 +26,18 @@ export class HomePage {
 	}
 
 	startTest() {
-		this.navCtrl.push(TestPage, {
-			settings: this.settingsForm.value
-		});
+		if(this.settingsForm.valid) {
+			this.navCtrl.push(TestPage, {
+				settings: this.settingsForm.value
+			});
+		}
+		else{
+			const toast = this.toastCtrl.create({
+				message: 'There is some error in the form',
+				duration: 1500
+			  });
+			  toast.present();
+		}
 	}
 
 }

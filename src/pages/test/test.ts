@@ -10,7 +10,8 @@ export class TestPage {
 
   @ViewChild(Navbar) navBar: Navbar;
 
-  settings
+  settings;
+  pageTitle = 'Offline Test Practice';
 
   o = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
 
@@ -78,7 +79,6 @@ export class TestPage {
   }
 
   mcqAnswer(x, i) {
-	// this.answers[x] = { 'res': i }
 	this.answers[x] = {'res': i}
   }
 

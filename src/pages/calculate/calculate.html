@@ -19,24 +19,24 @@
 <ion-footer>
     <ion-toolbar>
         <ion-item>
-            <ion-icon name="help" item-start></ion-icon>
+            <ion-icon name="help" item-start ></ion-icon>
             Questions unanswered
             <ion-badge item-end>{{questions - answered}}</ion-badge>
         </ion-item>
         <ion-item>
-            <ion-icon name="checkmark" item-start></ion-icon>
+            <ion-icon name="checkmark" item-start color="secondary"></ion-icon>
             Answered correct
-            <ion-badge item-end>{{right}}</ion-badge>
+            <ion-badge color="secondary" item-end>{{right}}</ion-badge>
         </ion-item>
         <ion-item>
-            <ion-icon name="close" item-start></ion-icon>
+            <ion-icon name="close" item-start color="danger"></ion-icon>
             Answered incorrect
-            <ion-badge item-end>{{wrong}}</ion-badge>
+            <ion-badge color="danger" item-end>{{wrong}}</ion-badge>
         </ion-item>
         <ion-item>
-            <ion-icon name="done-all" item-start></ion-icon>
+            <ion-icon name="done-all" item-start color="dark"></ion-icon>
             Total Score out of {{positive*questions}}
-            <ion-badge item-end>{{total}}</ion-badge>
+            <ion-badge color="dark" item-end>{{total}}</ion-badge>
         </ion-item>
     </ion-toolbar>
 </ion-footer>

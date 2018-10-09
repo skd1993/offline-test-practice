@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Navbar } from 'ionic-angular';
+import { NavController, NavParams, Navbar, AlertController } from 'ionic-angular';
 
 @Component({
     selector: 'page-calculate',
@@ -18,7 +18,7 @@ export class CalculatePage {
     right: number;
     wrong: number;
     
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
         this.responseData = this.navParams.get('responseData');
         this.questions = this.navParams.get('questions');
         this.answered = this.navParams.get('answered');
@@ -38,13 +38,35 @@ export class CalculatePage {
 
       setBackButtonAction() {
         this.navBar.backButtonClick = () => {
-            this.total = 0;
-            this.right = 0;
-            this.wrong = this.answered;
-            this.responseData = {}
-            this.navCtrl.pop();
+            return this.showConfirm()
           }
       }
+
+    showConfirm() {
+        const confirm = this.alertCtrl.create({
+            title: 'Go back to home?',
+            message: 'You will be returned to home page, all data will be lost',
+            buttons: [
+              {
+                text: 'Yes',
+                handler: () => {
+                    this.total = 0;
+                    this.right = 0;
+                    this.wrong = this.answered;
+                    this.responseData = {}
+                    this.navCtrl.popToRoot();
+                }
+              },
+              {
+                text: 'No',
+                role: 'cancel',
+                handler: () => {
+                }
+              }
+            ]
+        });
+        confirm.present();
+    }
 
     toggle(key) {
         if(this.responseData[key].score === undefined || this.responseData[key].score === false) {
