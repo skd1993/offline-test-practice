@@ -1,1 +1,1 @@
-web: npm run build && npm start
+worker: server.js
