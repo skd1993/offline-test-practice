@@ -5,7 +5,7 @@
   "homepage": "https://github.com/skd1993/offline-test-practice",
   "private": false,
   "scripts": {
-    "start": "ionic-app-scripts serve --no-open",
+    "start": "ionic-app-scripts serve --nobrowser",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint"
