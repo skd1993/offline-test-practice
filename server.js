@@ -1,8 +1,7 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 3000
-
-express()
-  .use(express.static('www'))
-  .set('view engine', 'ejs');
-  http.createServer(onRequest).listen(process.env.PORT || 6000)
+var express = require('express'),
+    app = express();
+app.use(express.static('www'));
+app.set('port', process.env.PORT || 5000);
+app.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
+});
