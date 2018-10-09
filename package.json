@@ -1,9 +1,9 @@
 {
   "name": "offline-test-practice",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "private": true,
+  "version": "0.1.0",
+  "author": "Shobhit Kumar Deepanker",
+  "homepage": "https://github.com/skd1993/offline-test-practice",
+  "private": false,
   "scripts": {
     "start": "ionic-app-scripts serve --no-open",
     "clean": "ionic-app-scripts clean",
@@ -42,5 +42,5 @@
     "@ionic/lab": "1.0.11",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project to practice for offline tests and calculating marks"
 }
