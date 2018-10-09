@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, AlertController } from 'ionic-angular';
 import { TestPage } from '../test/test';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
  
@@ -13,7 +13,7 @@ export class HomePage {
 	private settingsForm: FormGroup;
 	pageTitle = 'Offline Test Practice'
 
-	constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+	constructor(public navCtrl: NavController, public toastCtrl: ToastController, public alertCtrl: AlertController) {
 	}
 
 	ngOnInit() {
@@ -38,6 +38,17 @@ export class HomePage {
 			  });
 			  toast.present();
 		}
+	}
+
+	appInfo() {
+		const alert = this.alertCtrl.create({
+			title: 'About this app',
+			subTitle: `<p>This app is to help you keep track of questions and calculate marks while practicing for a MCQ test/exam from an offline source.</p>
+			<p>Made with &#128150; by <a href="https://www.github.com/skd1993">Shobhit</a>
+			<p><a href="https://twitter.com/shobhit_kumar31">@shobhit_kumar31</a>`,
+			buttons: ['OK']
+		  });
+		  alert.present();
 	}
 
 }
