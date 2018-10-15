@@ -20,7 +20,11 @@ self.toolbox.precache(
     // './build/polyfills.js',
     // 'index.html',
     'manifest.json',
-    '../www/'
+    '../www/index.html',
+    '../www/build/main.js',
+    '../www/build/vendor.js',
+    '../www/build/main.css',
+    '../www/build/polyfills.js'
   ]
 );
 
