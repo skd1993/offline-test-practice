@@ -12,7 +12,6 @@
 </ion-header>
 
 <ion-content padding>
-   {{views }}
     <form novalidate [formGroup]="settingsForm" (ngSubmit)="startTest()">
         <ion-item>
             <ion-label floating text-wrap>Enter no. of questions (min=2)</ion-label>
@@ -36,5 +35,4 @@
         <br />
         <button ion-button full [disabled]="!settingsForm.valid" type="submit">Start Test</button>
     </form>
-    
 </ion-content>

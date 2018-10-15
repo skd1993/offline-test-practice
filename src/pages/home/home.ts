@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, ToastController, AlertController } from 'ionic-angular';
 import { TestPage } from '../test/test';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
- 
+
 @Component({
 	selector: 'page-home',
 	templateUrl: 'home.html'
