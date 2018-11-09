@@ -1,6 +1,6 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Offline Test Practice",
+  "short_name": "Offline Test Practice",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
